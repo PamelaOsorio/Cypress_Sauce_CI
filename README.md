@@ -1,83 +1,84 @@
-#Cypress End-to-End Tests
+# Cypress End-to-End Tests
 
 Este é um projeto de testes end-to-end utilizando Cypress.
 
-#Descrição
+## Descrição
 
-Este repositório contém a automação de testes para um website (Sauce), utilizando o framework Cypress, o padrão de projeto "Page Objects". O projeto inclui configurações para ambientes de desenvolvimento e QA, além de integração com ferramentas de relatórios como Mochawesome e JUnit.
+Este repositório contém a automação de testes para um website (Sauce), utilizando o framework Cypress e o padrão de projeto "Page Objects". O projeto inclui configurações para ambientes de desenvolvimento e QA, além de integração com ferramentas de relatórios como Mochawesome e JUnit.
 
-#Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
-Cypress: Framework para testes end-to-end.
+- **Cypress**: Framework para testes end-to-end.
+- **Mochawesome**: Gerador de relatórios de testes.
+- **JUnit**: Geração de relatórios de testes no formato JUnit.
+- **dotenv**: Carregamento de variáveis de ambiente a partir de arquivos `.env`.
+- **JavaScript**: Linguagem utilizada para escrever os testes.
 
-Mochawesome: Gerador de relatórios de testes.
+## Requisitos
 
-JUnit: Geração de relatórios de testes no formato JUnit.
+### Versões
 
-dotenv: Carregamento de variáveis de ambiente a partir de arquivos .env.
+- **Cypress**: v15.7.0
+- **Node.js**: v24.5.0 (Versão usada)
 
-JavaScript: Linguagem utilizada para escrever os testes.
+## Configuração do Ambiente
 
-#Requisitos
+1. Clone o repositório:
 
-#Versões
+    ```bash
+    git clone https://github.com/PamelaOsorio/Cypress_Sauce_CI.git
+    cd Cypress_Sauce_CI
+    ```
 
-Cypress: v15.7.0
+2. Instale as dependências do projeto:
 
-Node.js: v24.5.0 (Versão usada)
+    ```bash
+    npm install
+    ```
 
+3. Crie um arquivo `.env` na raiz do projeto e defina suas variáveis de ambiente:
 
-#Configuração do Ambiente
+    Exemplo do arquivo `.env`:
 
-Clone o repositório:
+    ```env
+    BASE_URL=http://seu-app.com
+    CYPRESS_USERNAME=seu-usuario
+    CYPRESS_PASSWORD=sua-senha
+    ```
 
-git clone https://github.com/PamelaOsorio/Cypress_Sauce_CI.git
-cd Cypress_Sauce_CI
+4. **Importante**: Não versionar o arquivo `.
 
+ ```bash
+    echo ".env" >> .gitignore
+   ```
 
-Instale as dependências do projeto:
+## Executando os Testes
 
-npm install
+1. **Abrir o Cypress no ambiente de Desenvolvimento**:
 
+    ```bash
+    npm run cypress:open:dev
+    ```
 
-Crie um arquivo .env na raiz do projeto e defina suas variáveis de ambiente:
+    (Ambiente de QA atualmente não existe, apenas para fins de estudos)
 
-Exemplo do arquivo .env:
+2. **Gerar Relatórios**:
 
-BASE_URL=http://seu-app.com
-CYPRESS_USERNAME=seu-usuario
-CYPRESS_PASSWORD=sua-senha
+    Os relatórios de execução dos testes serão gerados automaticamente com as configurações definidas no `cypress.config.js`.
 
-
-Não versionar o arquivo .env no Git. Adicione-o ao .gitignore:
-
-echo ".env" >> .gitignore
-
-#Executando os Testes
-
-1. Abrir o Cypress no ambiente de Desenvolvimento:
-npm run cypress:open:dev
-
-(Ambiente de QA atualmente não existe, apenas para fins de estudos)
-
-2. Gerar Relatórios
-
-Os relatórios de execução dos testes serão gerados automaticamente com as configurações definidas no cypress.config.js.
-
-#Estrutura do Projeto
+## Estrutura do Projeto
 
 O projeto está estruturado da seguinte forma:
 
 /cypress
-  /e2e            # Arquivos de testes
-  /fixtures       # Dados de teste
-  /pages          # Testes end-to-end
-  /reports        # Plugins do Cypress - Onde relatórios são gerados
-  /support        # Funções e comandos personalizados
+/e2e # Arquivos de testes
+/fixtures # Dados de teste
+/pages # Padrão Page Object para estruturar os testes
+/reports # Onde os relatórios são gerados
+/support # Funções e comandos personalizados
 
-/cypress.config.js  # Arquivo de configuração global do Cypress
-/.env               # Arquivo com variáveis de ambiente (não versionado)
-/.gitignore         # Ignora arquivos e pastas não versionados
-/package.json       # Dependências e scripts
+/cypress.config.js # Arquivo de configuração global do Cypress
+/.env # Arquivo com variáveis de ambiente (não versionado)
+/.gitignore # Ignora arquivos e pastas não versionados
+/package.json # Dependências e scripts
 
- é só avisar!
