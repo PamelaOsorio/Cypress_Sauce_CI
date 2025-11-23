@@ -12,7 +12,7 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "cypress": "^15.5.0",
+    "cypress": "^15.7.0",
     "cypress-mochawesome-reporter": "^4.0.2",
     "cypress-multi-reporters": "^2.0.5",
     "dotenv": "^17.2.3",

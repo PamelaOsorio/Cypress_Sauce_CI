@@ -1,4 +1,4 @@
-/*const {defineConfig} = require('cypress')
+const {defineConfig} = require('cypress')
 const baseConfig = require('./cypress.config')
 const dotenv = require('dotenv')
 const path = require('path')
@@ -16,4 +16,4 @@ const e2e = {
 module.exports = defineConfig({
     ...baseConfig,
     e2e
-})*/
+})
