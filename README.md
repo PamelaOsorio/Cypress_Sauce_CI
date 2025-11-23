@@ -70,6 +70,7 @@ Este repositório contém a automação de testes para um website (Sauce), utili
 
 O projeto está estruturado da seguinte forma:
 
+```
 /cypress
 /e2e # Arquivos de testes
 /fixtures # Dados de teste
@@ -81,4 +82,6 @@ O projeto está estruturado da seguinte forma:
 /.env # Arquivo com variáveis de ambiente (não versionado)
 /.gitignore # Ignora arquivos e pastas não versionados
 /package.json # Dependências e scripts
+```
+
 
