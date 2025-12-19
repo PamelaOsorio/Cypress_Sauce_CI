@@ -27,6 +27,7 @@ jobs:
       - name: Criar pastas de relatório
         run: |
           mkdir -p cypress/reports/junit
+          mkdir -p cypress/reports/mochawesome
 
       - name: Cypress run
         uses: cypress-io/github-action@v6
@@ -37,3 +38,18 @@ jobs:
         with:
           name: cypress-junit-report
           path: cypress/reports/junit
+
+      - name: Gerar relatório HTML Mochawesome
+        if: always()
+        run: |
+          npx mochawesome-merge cypress/reports/mochawesome/*.json > cypress/reports/mochawesome/report.json
+          npx marge cypress/reports/mochawesome/report.json \
+            --reportDir cypress/reports/mochawesome/html \
+            --reportFilename index
+
+      - name: Upload relatório HTML
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cypress-html-report
+          path: cypress/reports/mochawesome/html
