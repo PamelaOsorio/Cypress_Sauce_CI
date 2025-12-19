@@ -32,24 +32,8 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6
 
-      - name: Upload relatório JUnit
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: cypress-junit-report
-          path: cypress/reports/junit
-
       - name: Gerar relatório HTML Mochawesome
         if: always()
         run: |
-          npx mochawesome-merge cypress/reports/mochawesome/*.json > cypress/reports/mochawesome/report.json
-          npx marge cypress/reports/mochawesome/report.json \
-            --reportDir cypress/reports/mochawesome/html \
-            --reportFilename index
-
-      - name: Upload relatório HTML
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: cypress-html-report
-          path: cypress/reports/mochawesome/html
+          if compgen -G "cypress/reports/mochawesome/*.json" > /dev/null; then
+            npx mochawesome-me
