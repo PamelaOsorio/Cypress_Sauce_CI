@@ -12,6 +12,7 @@ module.exports = defineConfig({
     },
 
     cypressMochawesomeReporterReporterOptions: {
+      reportDir: 'cypress/reports/mochawesome',
       charts: true,
       reportPageTitle: 'Relatório de testes',
       embeddedScreenshots: true,
