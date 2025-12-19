@@ -36,12 +36,13 @@ jobs:
         if: always()
         run: |
           if compgen -G "cypress/reports/mochawesome/*.json" > /dev/null; then
-             npx mochawesome-merge cypress/reports/mochawesome/*.json > cypress/reports/mochawesome/report.json
-             npx marge cypress/reports/mochawesome/report.json \
-             --reportDir cypress/reports/mochawesome/html \
-             --reportFilename index
+            npx mochawesome-merge cypress/reports/mochawesome/*.json > cypress/reports/mochawesome/report.json
+            npx marge cypress/reports/mochawesome/report.json \
+              --reportDir cypress/reports/mochawesome/html \
+              --reportFilename index
           else
-              echo "Nenhum JSON encontrado, HTML não será gerado."
+            echo "Nenhum JSON encontrado, HTML não será gerado."
           fi
 
-
+      - name: Listar JSONs Mochawesome
+        run: ls -l cypress/reports/mochawesome
