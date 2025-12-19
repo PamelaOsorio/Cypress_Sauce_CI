@@ -1,15 +1,32 @@
 name: End-to-end tests
-on: push
+
+on:
+  push:
+
 jobs:
   cypress-run:
     runs-on: ubuntu-22.04
-     env:
-      # 🔐 Secrets definidos no repositório
+
+    env:
       BASE_URL: ${{ secrets.BASE_URL }}
       CYPRESS_USERNAME: ${{ secrets.CYPRESS_USERNAME }}
       CYPRESS_PASSWORD: ${{ secrets.CYPRESS_PASSWORD }}
+
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
-    - name: Cypress run
-      uses: cypress-io/github-action@v6
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Criar pastas de relatório
+        run: |
+          mkdir -p cypress/reports/junit
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
