@@ -32,6 +32,9 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6
 
+      - name: Listar JSONs Mochawesome (debug)
+        run: ls -l cypress/reports/mochawesome
+
       - name: Gerar relatório HTML Mochawesome
         if: always()
         run: |
@@ -44,5 +47,16 @@ jobs:
             echo "Nenhum JSON encontrado, HTML não será gerado."
           fi
 
-      - name: Listar JSONs Mochawesome
-        run: ls -l cypress/reports/mochawesome
+      - name: Upload relatório HTML completo
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cypress-html-report
+          path: cypress/reports/mochawesome/
+
+      - name: Upload relatório JUnit
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cypress-junit-report
+          path: cypress/reports/junit
